@@ -14,11 +14,14 @@ class cartMail extends Mailable
     use Queueable, SerializesModels;
 
     public $cartData;
+    public $userData;
 
-    public function __construct($data)
+    public function __construct($cartData,$userData)
     {
-        //
+        $this->cartData = $cartData;
+        $this->userData = $userData;
     }
+    
 
     /**
      * Get the message envelope.

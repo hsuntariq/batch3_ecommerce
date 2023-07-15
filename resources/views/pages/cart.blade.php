@@ -29,42 +29,43 @@
         </thead>
         <tbody>
             <form action="/send-mail" method="POST">
-            @foreach ($cartItems as $item)
-                <tr>
-                    <td>{{ $item->product_name }}
-                        <input type="hidden" name="name" value="{{ $item->product_name }}">
-                    </td>
-                    
-                    <td>{{ $item->product_price }}
-                        <input type="hidden" name="price" value="{{ $item->product_price }}">
-                    </td>
-                    
+                @csrf
+                @foreach ($cartItems as $item)
+                    <tr>
+                        <td>{{ $item->product_name }}
+                            <input type="hidden" name="name" value="{{ $item->product_name }}">
+                        </td>
 
-                    <td>{{ $item->product_quantity }}
-                        <input type="hidden" name="price" value="{{ $item->product_quantity }}">
-                    </td>
-                    
-                    <td>
-                        <img width="50px" src="{{asset('storage/' . $item->product_image)}}" alt="">
-                        <input type="hidden" name="image" value="{{ $item->product_image }}">
+                        <td>{{ $item->product_price }}
+                            <input type="hidden" name="price" value="{{ $item->product_price }}">
+                        </td>
 
-                    </td>
-                    
-                    <td>
-                        <button class="btn btn-info">Update</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger ">Delete</button>
-                    </td>
-                </tr>
-            @endforeach
+
+                        <td>{{ $item->product_quantity }}
+                            <input type="hidden" name="quantity" value="{{ $item->product_quantity }}">
+                        </td>
+
+                        <td>
+                            <img width="50px" src="{{ asset('storage/' . $item->product_image) }}" alt="">
+                            <input type="hidden" name="image" value="{{ $item->product_image }}">
+
+                        </td>
+
+                        <td>
+                            <button class="btn btn-info">Update</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger ">Delete</button>
+                        </td>
+                    </tr>
+                @endforeach
 
         </tbody>
     </table>
     <button type="submit" class="btn btn-primary d-flex ms-auto w-25 justify-content-center">
         CheckOut
     </button>
-</form>
+    </form>
 </body>
 
 </html>
